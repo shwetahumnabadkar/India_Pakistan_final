@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="css/dviz.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/dviz.js"></script>
+    <script type="text/javascript">$(function() {dviz.run();});</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet" href="stylesheets/skeleton.css">
+	
+    <title>India vs Pakistan Cricket</title>
+<script language="JavaScript" type="text/javascript">
+<!--
+//v1.7
+// Flash Player Version Detection
+// Detect Client Browser type
+// Copyright 2005-2008 Adobe Systems Incorporated.  All rights reserved.
+var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
+var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
+var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
+function ControlVersion()
+{
+	var version;
+	var axo;
+	var e;
+	// NOTE : new ActiveXObject(strFoo) throws an exception if strFoo isn't in the registry
+	try {
+		// version will be set for 7.X or greater players
+		axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
+		version = axo.GetVariable("$version");
+	} catch (e) {
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 6.X players only
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
+			
+			// installed player is some revision of 6.0
+			// GetVariable("$version") crashes for versions 6.0.22 through 6.0.29,
+			// so we have to be careful. 
+			
+			// default to the first public version
+			version = "WIN 6,0,21,0";
+			// throws if AllowScripAccess does not exist (introduced in 6.0r47)		
+			axo.AllowScriptAccess = "always";
+			// safe to call for 6.0r47 or greater
+			version = axo.GetVariable("$version");
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 4.X or 5.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+			version = axo.GetVariable("$version");
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 3.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+			version = "WIN 3,0,18,0";
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 2.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+			version = "WIN 2,0,0,11";
+		} catch (e) {
+			version = -1;
+		}
+	}
+	
+	return version;
+}
+// JavaScript helper required to detect Flash Player PlugIn version information
+function GetSwfVer(){
+	// NS/Opera version >= 3 check for Flash plugin in plugin array
+	var flashVer = -1;
+	
+	if (navigator.plugins != null && navigator.plugins.length > 0) {
+		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
+			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
+			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
+			var descArray = flashDescription.split(" ");
+			var tempArrayMajor = descArray[2].split(".");			
+			var versionMajor = tempArrayMajor[0];
+			var versionMinor = tempArrayMajor[1];
+			var versionRevision = descArray[3];
+			if (versionRevision == "") {
+				versionRevision = descArray[4];
+			}
+			if (versionRevision[0] == "d") {
+				versionRevision = versionRevision.substring(1);
+			} else if (versionRevision[0] == "r") {
+				versionRevision = versionRevision.substring(1);
+				if (versionRevision.indexOf("d") > 0) {
+					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
+				}
+			}
+			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
+		}
+	}
+	// MSN/WebTV 2.6 supports Flash 4
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
+	// WebTV 2.5 supports Flash 3
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
+	// older WebTV supports Flash 2
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
+	else if ( isIE && isWin && !isOpera ) {
+		flashVer = ControlVersion();
+	}	
+	return flashVer;
+}
+// When called with reqMajorVer, reqMinorVer, reqRevision returns true if that version or greater is available
+function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision)
+{
+	versionStr = GetSwfVer();
+	if (versionStr == -1 ) {
+		return false;
+	} else if (versionStr != 0) {
+		if(isIE && isWin && !isOpera) {
+			// Given "WIN 2,0,0,11"
+			tempArray         = versionStr.split(" "); 	// ["WIN", "2,0,0,11"]
+			tempString        = tempArray[1];			// "2,0,0,11"
+			versionArray      = tempString.split(",");	// ['2', '0', '0', '11']
+		} else {
+			versionArray      = versionStr.split(".");
+		}
+		var versionMajor      = versionArray[0];
+		var versionMinor      = versionArray[1];
+		var versionRevision   = versionArray[2];
+        	// is the major.revision >= requested major.revision AND the minor version >= requested minor
+		if (versionMajor > parseFloat(reqMajorVer)) {
+			return true;
+		} else if (versionMajor == parseFloat(reqMajorVer)) {
+			if (versionMinor > parseFloat(reqMinorVer))
+				return true;
+			else if (versionMinor == parseFloat(reqMinorVer)) {
+				if (versionRevision >= parseFloat(reqRevision))
+					return true;
+			}
+		}
+		return false;
+	}
+}
+function AC_AddExtension(src, ext)
+{
+  if (src.indexOf('?') != -1)
+    return src.replace(/\?/, ext+'?'); 
+  else
+    return src + ext;
+}
+function AC_Generateobj(objAttrs, params, embedAttrs) 
+{ 
+  var str = '';
+  if (isIE && isWin && !isOpera)
+  {
+    str += '<object ';
+    for (var i in objAttrs)
+    {
+      str += i + '="' + objAttrs[i] + '" ';
+    }
+    str += '>';
+    for (var i in params)
+    {
+      str += '<param name="' + i + '" value="' + params[i] + '" /> ';
+    }
+    str += '</object>';
+  }
+  else
+  {
+    str += '<embed ';
+    for (var i in embedAttrs)
+    {
+      str += i + '="' + embedAttrs[i] + '" ';
+    }
+    str += '> </embed>';
+  }
+  document.write(str);
+}
+function AC_FL_RunContent(){
+  var ret = 
+    AC_GetArgs
+    (  arguments, ".swf", "movie", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+     , "application/x-shockwave-flash"
+    );
+  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+}
+function AC_SW_RunContent(){
+  var ret = 
+    AC_GetArgs
+    (  arguments, ".dcr", "src", "clsid:166B1BCA-3F9C-11CF-8075-444553540000"
+     , null
+    );
+  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+}
+function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
+  var ret = new Object();
+  ret.embedAttrs = new Object();
+  ret.params = new Object();
+  ret.objAttrs = new Object();
+  for (var i=0; i < args.length; i=i+2){
+    var currArg = args[i].toLowerCase();    
+    switch (currArg){	
+      case "classid":
+        break;
+      case "pluginspage":
+        ret.embedAttrs[args[i]] = args[i+1];
+        break;
+      case "src":
+      case "movie":	
+        args[i+1] = AC_AddExtension(args[i+1], ext);
+        ret.embedAttrs["src"] = args[i+1];
+        ret.params[srcParamName] = args[i+1];
+        break;
+      case "onafterupdate":
+      case "onbeforeupdate":
+      case "onblur":
+      case "oncellchange":
+      case "onclick":
+      case "ondblclick":
+      case "ondrag":
+      case "ondragend":
+      case "ondragenter":
+      case "ondragleave":
+      case "ondragover":
+      case "ondrop":
+      case "onfinish":
+      case "onfocus":
+      case "onhelp":
+      case "onmousedown":
+      case "onmouseup":
+      case "onmouseover":
+      case "onmousemove":
+      case "onmouseout":
+      case "onkeypress":
+      case "onkeydown":
+      case "onkeyup":
+      case "onload":
+      case "onlosecapture":
+      case "onpropertychange":
+      case "onreadystatechange":
+      case "onrowsdelete":
+      case "onrowenter":
+      case "onrowexit":
+      case "onrowsinserted":
+      case "onstart":
+      case "onscroll":
+      case "onbeforeeditfocus":
+      case "onactivate":
+      case "onbeforedeactivate":
+      case "ondeactivate":
+      case "type":
+      case "codebase":
+      case "id":
+        ret.objAttrs[args[i]] = args[i+1];
+        break;
+      case "width":
+      case "height":
+      case "align":
+      case "vspace": 
+      case "hspace":
+      case "class":
+      case "title":
+      case "accesskey":
+      case "name":
+      case "tabindex":
+        ret.embedAttrs[args[i]] = ret.objAttrs[args[i]] = args[i+1];
+        break;
+      default:
+        ret.embedAttrs[args[i]] = ret.params[args[i]] = args[i+1];
+    }
+  }
+  ret.objAttrs["classid"] = classid;
+  if (mimeType) ret.embedAttrs["type"] = mimeType;
+  return ret;
+}
+// -->
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="sixteen columns">
+    <h1><center>India vs Pakistan</center></h1><br><br>
+    <p><strong>'India–Pakistan cricket rivalry'</strong> is one of the most intense sports rivalries in the world. Resulting from the extensive communal violence and conflict that marked the partition of India into India and Pakistan in 1947 and the subsequent Kashmir conflict, laid the foundations for the emergence of an intense sporting rivalry between the two nations who had erstwhile shared a common cricketing heritage. Both the teams are quite strong and their never say die spirit against each other enhances the ecstasy and anticipation of the match. Be it an ODI, a 20 – 20 or a test cricket match between India and Pakistan, it is capable of turning millions of eyeballs not only from these two countries but from all over the world. Here is an attempt of visualizing head to head statistics of all the India v/s Pakistan matches played to understand the intricacies of the arch-rival relations between the two nations: </p>
+
+
+<script language="JavaScript" type="text/javascript">
+	AC_FL_RunContent(
+		'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0',
+		'width', '1024',
+		'height', '768',
+		'src', 'Final_viz',
+		'quality', 'high',
+		'pluginspage', 'http://www.adobe.com/go/getflashplayer',
+		'align', 'middle',
+		'play', 'true',
+		'loop', 'true',
+		'scale', 'showall',
+		'wmode', 'window',
+		'devicefont', 'false',
+		'id', 'Final_viz',
+		'bgcolor', '#ffffff',
+		'name', 'Final_viz',
+		'menu', 'true',
+		'allowFullScreen', 'false',
+		'allowScriptAccess','sameDomain',
+		'movie', 'Final_viz',
+		'salign', ''
+		); //end AC code
+</script>
+<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="1024" height="768" id="Final_viz" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="Final_viz.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="Final_viz.swf" quality="high" bgcolor="#ffffff" width="1024" height="768" name="Final_viz" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+	</object>
+</noscript>
+</div>
+<div class="sixteen columns">
+    <br>
+    <p>
+      The first Test series took place in 1951-52, when Pakistan toured India. India toured Pakistan for the first time in 1954-55. Between 1962–77, no cricket was played between the two countries owing to two major wars in 1965 and 1971. The 1999 Kargil War and the 2008 Mumbai terrorist attacks have also interrupted cricketing ties between the two nations. Statistics show that Pakistan leads India in the number of wins in Tests (12–9) and One Day Internationals (71–50). While India leads Pakistan in T20s (4-1).
+    </p>
+
+<svg width="800" height="601" xmlns="http://www.w3.org/2000/svg" version="1.1"><g transform="translate(5,5)"><g><path class="link" d="M535,315.9598546136428C657.5,315.9598546136428 657.5,305.7637181790393 780,305.7637181790393" style="stroke-width: 107.45945945945947px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>ODI -> Pakistan
+71</title></path><path class="link" d="M275,413.41016433009355C397.5,413.41016433009355 397.5,395.4193140731022 520,395.4193140731022" style="stroke-width: 99.8918918918919px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>Neutral -> ODI
+66</title></path><path class="link" d="M535,407.52742218121034C657.5,407.52742218121034 657.5,532.466420881742 780,532.466420881742" style="stroke-width: 75.67567567567568px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>ODI -> India
+50</title></path><path class="link" d="M535,153.68958434337253C657.5,153.68958434337253 657.5,73.00706276630858 780,73.00706276630858" style="stroke-width: 57.513513513513516px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>Test -> Draw
+38</title></path><path class="link" d="M275,141.08206411670352C397.5,141.08206411670352 397.5,149.90580055958873 520,149.90580055958873" style="stroke-width: 49.94594594594595px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>India -> Test
+33</title></path><path class="link" d="M275,189.51449654913594C397.5,189.51449654913594 397.5,285.68958434337253 520,285.68958434337253" style="stroke-width: 46.91891891891892px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>India -> ODI
+31</title></path><path class="link" d="M275,270.9199019545414C397.5,270.9199019545414 397.5,193.7976924514806 520,193.7976924514806" style="stroke-width: 37.83783783783784px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>Pakistan -> Test
+25</title></path><path class="link" d="M275,308.0009830356224C397.5,308.0009830356224 397.5,327.3112059649941 520,327.3112059649941" style="stroke-width: 36.32432432432432px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>Pakistan -> ODI
+24</title></path><path class="link" d="M535,191.52742218121034C657.5,191.52742218121034 657.5,242.95290736822852 780,242.95290736822852" style="stroke-width: 18.16216216216216px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>Test -> Pakistan
+12</title></path><path class="link" d="M15,263.0810810810811C137.5,263.0810810810811 137.5,156.21719925183868 260,156.21719925183868" style="stroke-width: 16.64864864864865px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1987 -> India
+11</title></path><path class="link" d="M535,207.41931407310224C657.5,207.41931407310224 657.5,487.8177722330934 780,487.8177722330934" style="stroke-width: 13.621621621621623px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>Test -> India
+9</title></path><path class="link" d="M15,399.83783783783787C137.5,399.83783783783787 137.5,421.73448865441793 260,421.73448865441793" style="stroke-width: 13.621621621621623px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1998 -> Neutral
+9</title></path><path class="link" d="M15,485.81081081081084C137.5,485.81081081081084 137.5,188.00098303562245 260,188.00098303562245" style="stroke-width: 13.621621621621623px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2005 -> India
+9</title></path><path class="link" d="M15,519.7837837837839C137.5,519.7837837837839 137.5,200.86584790048732 260,200.86584790048732" style="stroke-width: 12.108108108108109px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2007 -> India
+8</title></path><path class="link" d="M15,467.13513513513516C137.5,467.13513513513516 137.5,304.97395600859545 260,304.97395600859545" style="stroke-width: 12.108108108108109px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>2004 -> Pakistan
+8</title></path><path class="link" d="M15,500.4864864864865C137.5,500.4864864864865 137.5,317.0820641167035 260,317.0820641167035" style="stroke-width: 12.108108108108109px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>2006 -> Pakistan
+8</title></path><path class="link" d="M15,367.97297297297297C137.5,367.97297297297297 137.5,399.788542708472 260,399.788542708472" style="stroke-width: 12.108108108108109px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1996 -> Neutral
+8</title></path><path class="link" d="M15,431.94594594594594C137.5,431.94594594594594 137.5,439.89665081658006 260,439.89665081658006" style="stroke-width: 10.594594594594595px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2000 -> Neutral
+7</title></path><path class="link" d="M15,293.78378378378375C137.5,293.78378378378375 137.5,291.3523343869738 260,291.3523343869738" style="stroke-width: 9.08108108108108px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1989 -> Pakistan
+6</title></path><path class="link" d="M15,413.4594594594594C137.5,413.4594594594594 137.5,175.13611817075758 260,175.13611817075758" style="stroke-width: 9.08108108108108px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1999 -> India
+6</title></path><path class="link" d="M15,152.1891891891892C137.5,152.1891891891892 137.5,262.595577630217 260,262.595577630217" style="stroke-width: 9.08108108108108px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1978 -> Pakistan
+6</title></path><path class="link" d="M15,386.86486486486484C137.5,386.86486486486484 137.5,410.3831373030665 260,410.3831373030665" style="stroke-width: 9.08108108108108px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1997 -> Neutral
+6</title></path><path class="link" d="M15,207.4054054054054C137.5,207.4054054054054 137.5,144.10909114373055 260,144.10909114373055" style="stroke-width: 7.567567567567568px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1983 -> India
+5</title></path><path class="link" d="M15,3.783783783783784C137.5,3.783783783783784 137.5,119.89287492751434 260,119.89287492751434" style="stroke-width: 7.567567567567568px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1952 -> India
+5</title></path><path class="link" d="M15,194.64864864864865C137.5,194.64864864864865 137.5,270.9199019545414 260,270.9199019545414" style="stroke-width: 7.567567567567568px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1982 -> Pakistan
+5</title></path><path class="link" d="M15,214.97297297297297C137.5,214.97297297297297 137.5,278.48746952210894 260,278.48746952210894" style="stroke-width: 7.567567567567568px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1983 -> Pakistan
+5</title></path><path class="link" d="M15,235.27027027027026C137.5,235.27027027027026 137.5,368.0047589246882 260,368.0047589246882" style="stroke-width: 6.054054054054054px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1985 -> Neutral
+4</title></path><path class="link" d="M535,522.9058005595888C657.5,522.9058005595888 657.5,573.3312857466069 780,573.3312857466069" style="stroke-width: 6.054054054054054px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>T20 -> India
+4</title></path><path class="link" d="M15,421.02702702702703C137.5,421.02702702702703 137.5,431.57232649225574 260,431.57232649225574" style="stroke-width: 6.054054054054054px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1999 -> Neutral
+4</title></path><path class="link" d="M15,162.51351351351352C137.5,162.51351351351352 137.5,134.2712533058927 260,134.2712533058927" style="stroke-width: 6.054054054054054px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1979 -> India
+4</title></path><path class="link" d="M15,32.37837837837838C137.5,32.37837837837838 137.5,255.02801006264949 260,255.02801006264949" style="stroke-width: 6.054054054054054px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1955 -> Pakistan
+4</title></path><path class="link" d="M15,570.918918918919C137.5,570.918918918919 137.5,210.70368573832513 260,210.70368573832513" style="stroke-width: 4.54054054054054px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2012 -> India
+3</title></path><path class="link" d="M15,315.56756756756755C137.5,315.56756756756755 137.5,385.41016433009355 260,385.41016433009355" style="stroke-width: 4.54054054054054px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1991 -> Neutral
+3</title></path><path class="link" d="M275,465.6263805463098C397.5,465.6263805463098 397.5,523.6625573163456 520,523.6625573163456" style="stroke-width: 4.54054054054054px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>Neutral -> T20
+3</title></path><path class="link" d="M15,224.86486486486484C137.5,224.86486486486484 137.5,284.541523576163 260,284.541523576163" style="stroke-width: 4.54054054054054px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1984 -> Pakistan
+3</title></path><path class="link" d="M15,475.4594594594595C137.5,475.4594594594595 137.5,448.97773189766116 260,448.97773189766116" style="stroke-width: 4.54054054054054px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2004 -> Neutral
+3</title></path><path class="link" d="M15,66.8108108108108C137.5,66.8108108108108 137.5,125.94692898156839 260,125.94692898156839" style="stroke-width: 4.54054054054054px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1960 -> India
+3</title></path><path class="link" d="M15,536.7567567567568C137.5,536.7567567567568 137.5,458.81556973549897 260,458.81556973549897" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2008 -> Neutral
+2</title></path><path class="link" d="M15,533.7297297297298C137.5,533.7297297297298 137.5,324.64963168427107 260,324.64963168427107" style="stroke-width: 3.027027027027027px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>2008 -> Pakistan
+2</title></path><path class="link" d="M15,344.40540540540525C137.5,344.40540540540525 137.5,390.70746162739084 260,390.70746162739084" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1994 -> Neutral
+2</title></path><path class="link" d="M15,574.7027027027027C137.5,574.7027027027027 137.5,464.86962378955303 260,464.86962378955303" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2012 -> Neutral
+2</title></path><path class="link" d="M15,582.972972972973C137.5,582.972972972973 137.5,214.48746952210894 260,214.48746952210894" style="stroke-width: 3.027027027027027px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2013 -> India
+2</title></path><path class="link" d="M15,247.35135135135133C137.5,247.35135135135133 137.5,372.5452994652287 260,372.5452994652287" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1986 -> Neutral
+2</title></path><path class="link" d="M275,214.48746952210894C397.5,214.48746952210894 397.5,519.8787735325618 520,519.8787735325618" style="stroke-width: 3.027027027027027px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>India -> T20
+2</title></path><path class="link" d="M15,380.8108108108108C137.5,380.8108108108108 137.5,297.40638844102784 260,297.40638844102784" style="stroke-width: 3.027027027027027px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>1997 -> Pakistan
+2</title></path><path class="link" d="M15,377.78378378378375C137.5,377.78378378378375 137.5,169.08206411670355 260,169.08206411670355" style="stroke-width: 3.027027027027027px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1997 -> India
+2</title></path><path class="link" d="M15,299.8378378378378C137.5,299.8378378378378 137.5,380.11286703279626 260,380.11286703279626" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1989 -> Neutral
+2</title></path><path class="link" d="M15,172.6216216216216C137.5,172.6216216216216 137.5,138.81179384643326 260,138.81179384643326" style="stroke-width: 3.027027027027027px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1980 -> India
+2</title></path><path class="link" d="M15,508.05405405405406C137.5,508.05405405405406 137.5,452.7615156814449 260,452.7615156814449" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2006 -> Neutral
+2</title></path><path class="link" d="M15,76.59459459459458C137.5,76.59459459459458 137.5,129.73071276535217 260,129.73071276535217" style="stroke-width: 3.027027027027027px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1961 -> India
+2</title></path><path class="link" d="M15,280.3783783783783C137.5,280.3783783783783 137.5,377.0858400057692 260,377.0858400057692" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1988 -> Neutral
+2</title></path><path class="link" d="M15,527.3513513513515C137.5,527.3513513513515 137.5,455.78854270847194 260,455.78854270847194" style="stroke-width: 3.027027027027027px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2007 -> Neutral
+2</title></path><path class="link" d="M15,554.2432432432432C137.5,554.2432432432432 137.5,462.5993535192828 260,462.5993535192828" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2010 -> Neutral
+1</title></path><path class="link" d="M15,272.1621621621622C137.5,272.1621621621622 137.5,374.815569735499 260,374.815569735499" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1987 -> Neutral
+1</title></path><path class="link" d="M15,454.21621621621614C137.5,454.21621621621614 137.5,445.9507048706341 260,445.9507048706341" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2003 -> Neutral
+1</title></path><path class="link" d="M15,305.6756756756755C137.5,305.6756756756755 137.5,382.3831373030666 260,382.3831373030666" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1990 -> Neutral
+1</title></path><path class="link" d="M275,362.7074616273909C397.5,362.7074616273909 397.5,213.4733681271563 520,213.4733681271563" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #000000; stroke-opacity: 0.2;"><title>Neutral -> Test
+1</title></path><path class="link" d="M15,361.1621621621622C137.5,361.1621621621622 137.5,166.81179384643323 260,166.81179384643323" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1996 -> India
+1</title></path><path class="link" d="M15,460.3243243243244C137.5,460.3243243243244 137.5,180.43341546805487 260,180.43341546805487" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2004 -> India
+1</title></path><path class="link" d="M15,227.89189189189187C137.5,227.89189189189187 137.5,364.2209751409044 260,364.2209751409044" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1984 -> Neutral
+1</title></path><path class="link" d="M15,544.7297297297297C137.5,544.7297297297297 137.5,461.0858400057693 260,461.0858400057693" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2009 -> Neutral
+1</title></path><path class="link" d="M15,354.7027027027026C137.5,354.7027027027026 137.5,392.97773189766116 260,392.97773189766116" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1995 -> Neutral
+1</title></path><path class="link" d="M15,562.8918918918919C137.5,562.8918918918919 137.5,207.67665871129813 260,207.67665871129813" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>2011 -> India
+1</title></path><path class="link" d="M15,288.4864864864865C137.5,288.4864864864865 137.5,165.29828033291975 260,165.29828033291975" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #A2CAEC; stroke-opacity: 0.5;"><title>1989 -> India
+1</title></path><path class="link" d="M15,325.18918918918905C137.5,325.18918918918905 137.5,388.43719135712064 260,388.43719135712064" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1992 -> Neutral
+1</title></path><path class="link" d="M15,36.16216216216217C137.5,36.16216216216217 137.5,362.7074616273909 260,362.7074616273909" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>1955 -> Neutral
+1</title></path><path class="link" d="M15,585.2432432432432C137.5,585.2432432432432 137.5,467.13989405982335 260,467.13989405982335" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #CCCC00; stroke-opacity: 0.5;"><title>2013 -> Neutral
+1</title></path><path class="link" d="M535,519.122016775805C657.5,519.122016775805 657.5,360.2502046655258 780,360.2502046655258" style="stroke-width: 1.5135135135135136px; fill: none; stroke: #00CC66; stroke-opacity: 0.5;"><title>T20 -> Pakistan
+1</title></path></g><g><g class="node" transform="translate(260,116.10909114373055)"><rect height="99.8918918918919" width="15" style="fill: #A2CAEC; stroke: #A2CAEC; shape-rendering: crispedges; cursor: ns-resize;"><title>India
+66</title></rect><text x="21" y="49.94594594594595" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">India</text></g><g class="node" transform="translate(780,44.25030600955182)"><rect height="57.513513513513516" width="15" style="fill: #CCCC00; stroke: #CCCC00; shape-rendering: crispedges; cursor: ns-resize;"><title>Draw
+38</title></rect><text x="-6" y="28.756756756756758" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">Draw</text></g><g class="node" transform="translate(780,233.87182628714743)"><rect height="127.13513513513514" width="15" style="fill: #00CC66; stroke: #00CC66; shape-rendering: crispedges; cursor: ns-resize;"><title>Pakistan
+84</title></rect><text x="-6" y="63.56756756756757" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">Pakistan</text></g><g class="node" transform="translate(780,481.0069614222826)"><rect height="95.35135135135135" width="15" style="fill: #A2CAEC; stroke: #A2CAEC; shape-rendering: crispedges; cursor: ns-resize;"><title>India
+63</title></rect><text x="-6" y="47.67567567567568" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">India</text></g><g class="node" transform="translate(520,518.3652600190483)"><rect height="7.567567567567568" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>T20
+5</title></rect><text x="-6" y="3.783783783783784" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">T20</text></g><g class="node" transform="translate(520,124.93282758661576)"><rect height="89.2972972972973" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>Test
+59</title></rect><text x="-6" y="44.64864864864865" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">Test</text></g><g class="node" transform="translate(520,262.23012488391305)"><rect height="183.13513513513516" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>ODI
+121</title></rect><text x="-6" y="91.56756756756758" dy=".35em" text-anchor="end" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">ODI</text></g><g class="node" transform="translate(260,361.9507048706341)"><rect height="105.94594594594595" width="15" style="fill: #CCCC00; stroke: #CCCC00; shape-rendering: crispedges; cursor: ns-resize;"><title>Neutral
+70</title></rect><text x="21" y="52.972972972972975" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">Neutral</text></g><g class="node" transform="translate(260,252.00098303562245)"><rect height="74.16216216216216" width="15" style="fill: #00CC66; stroke: #00CC66; shape-rendering: crispedges; cursor: ns-resize;"><title>Pakistan
+49</title></rect><text x="21" y="37.08108108108108" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">Pakistan</text></g><g class="node" transform="translate(0,0)"><rect height="7.567567567567568" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1952
+5</title></rect><text x="21" y="3.783783783783784" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1952</text></g><g class="node" transform="translate(0,581.4594594594595)"><rect height="4.54054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2013
+3</title></rect><text x="21" y="2.27027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2013</text></g><g class="node" transform="translate(0,568.6486486486486)"><rect height="7.567567567567568" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2012
+5</title></rect><text x="21" y="3.783783783783784" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2012</text></g><g class="node" transform="translate(0,29.351351351351354)"><rect height="7.567567567567568" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1955
+5</title></rect><text x="21" y="3.783783783783784" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1955</text></g><g class="node" transform="translate(0,75.08108108108107)"><rect height="3.027027027027027" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1961
+2</title></rect><text x="21" y="1.5135135135135136" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1961</text></g><g class="node" transform="translate(0,64.54054054054053)"><rect height="4.54054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1960
+3</title></rect><text x="21" y="2.27027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1960</text></g><g class="node" transform="translate(0,562.1351351351351)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2011
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2011</text></g><g class="node" transform="translate(0,553.4864864864865)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2010
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2010</text></g><g class="node" transform="translate(0,543.9729729729729)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2009
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2009</text></g><g class="node" transform="translate(0,532.2162162162163)"><rect height="6.054054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2008
+4</title></rect><text x="21" y="3.027027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2008</text></g><g class="node" transform="translate(0,513.7297297297298)"><rect height="15.135135135135137" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2007
+10</title></rect><text x="21" y="7.567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2007</text></g><g class="node" transform="translate(0,494.43243243243245)"><rect height="15.135135135135137" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2006
+10</title></rect><text x="21" y="7.567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2006</text></g><g class="node" transform="translate(0,479)"><rect height="13.621621621621623" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2005
+9</title></rect><text x="21" y="6.810810810810811" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2005</text></g><g class="node" transform="translate(0,459.5675675675676)"><rect height="18.16216216216216" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2004
+12</title></rect><text x="21" y="9.08108108108108" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2004</text></g><g class="node" transform="translate(0,453.45945945945937)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2003
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2003</text></g><g class="node" transform="translate(0,426.64864864864865)"><rect height="10.594594594594595" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>2000
+7</title></rect><text x="21" y="5.297297297297297" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">2000</text></g><g class="node" transform="translate(0,408.9189189189189)"><rect height="15.135135135135137" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1999
+10</title></rect><text x="21" y="7.567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1999</text></g><g class="node" transform="translate(0,393.02702702702703)"><rect height="13.621621621621623" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1998
+9</title></rect><text x="21" y="6.810810810810811" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1998</text></g><g class="node" transform="translate(0,376.27027027027026)"><rect height="15.135135135135137" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1997
+10</title></rect><text x="21" y="7.567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1997</text></g><g class="node" transform="translate(0,360.4054054054054)"><rect height="13.621621621621623" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1996
+9</title></rect><text x="21" y="6.810810810810811" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1996</text></g><g class="node" transform="translate(0,353.9459459459458)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1995
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1995</text></g><g class="node" transform="translate(0,342.89189189189176)"><rect height="3.027027027027027" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1994
+2</title></rect><text x="21" y="1.5135135135135136" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1994</text></g><g class="node" transform="translate(0,324.4324324324323)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1992
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1992</text></g><g class="node" transform="translate(0,313.2972972972973)"><rect height="4.54054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1991
+3</title></rect><text x="21" y="2.27027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1991</text></g><g class="node" transform="translate(0,304.91891891891873)"><rect height="1.5135135135135136" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1990
+1</title></rect><text x="21" y="0.7567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1990</text></g><g class="node" transform="translate(0,287.72972972972974)"><rect height="13.621621621621623" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1989
+9</title></rect><text x="21" y="6.810810810810811" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1989</text></g><g class="node" transform="translate(0,278.8648648648648)"><rect height="3.027027027027027" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1988
+2</title></rect><text x="21" y="1.5135135135135136" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1988</text></g><g class="node" transform="translate(0,254.75675675675677)"><rect height="18.16216216216216" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1987
+12</title></rect><text x="21" y="9.08108108108108" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1987</text></g><g class="node" transform="translate(0,245.8378378378378)"><rect height="3.027027027027027" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1986
+2</title></rect><text x="21" y="1.5135135135135136" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1986</text></g><g class="node" transform="translate(0,232.24324324324323)"><rect height="6.054054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1985
+4</title></rect><text x="21" y="3.027027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1985</text></g><g class="node" transform="translate(0,222.59459459459458)"><rect height="6.054054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1984
+4</title></rect><text x="21" y="3.027027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1984</text></g><g class="node" transform="translate(0,203.6216216216216)"><rect height="15.135135135135137" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1983
+10</title></rect><text x="21" y="7.567567567567568" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1983</text></g><g class="node" transform="translate(0,190.86486486486487)"><rect height="7.567567567567568" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1982
+5</title></rect><text x="21" y="3.783783783783784" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1982</text></g><g class="node" transform="translate(0,171.1081081081081)"><rect height="3.027027027027027" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1980
+2</title></rect><text x="21" y="1.5135135135135136" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1980</text></g><g class="node" transform="translate(0,159.48648648648648)"><rect height="6.054054054054054" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1979
+4</title></rect><text x="21" y="3.027027027027027" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1979</text></g><g class="node" transform="translate(0,147.64864864864865)"><rect height="9.08108108108108" width="15" style="fill: #707070; stroke: #363636; shape-rendering: crispedges; cursor: ns-resize;"><title>1978
+6</title></rect><text x="21" y="4.54054054054054" dy=".35em" text-anchor="start" style="font-size: 11px; font-family: Arial, Helvetica, sans-serif; pointer-events: none;">1978</text></g></g></g></svg>
+</div>
+<div class="dviz-content">
+<div class="sixteen columns">
+<p>
+The earlier iterations of the same are depicted using basic bar graphs:
+</p>
+<pre><code>
+Format,Ind,Draw,Pak
+Test,9,38,12
+ODI,50,0,71
+T20,4,0,1
+</code></pre>
+<p><code>(@column {colors:['#99CCFF', '#CCCC00','#00CC66'],height:300, vAxis:{title: 'Number of matches won'},hAxis:{title: 'Format'}})</code></p>
+</div>
+
+<div class="sixteen columns">
+<h5>Test matches</h5>
+<pre>
+   <code>
+Year,India,Draw,Pakistan
+1952,2,2,1
+1955,0,5,0
+1960,0,3,0
+1961,0,2,0
+1978,0,1,2
+1979,1,3,0
+1980,1,1,0
+1982,0,1,1
+1983,0,5,2
+1984,0,2,0
+1987,0,4,1
+1989,0,4,0
+1999,1,0,2
+2004,2,0,1
+2005,1,1,1
+2006,0,1,1
+2007,1,2,0
+   </code>
+</pre>
+<p><code>(@column {isStacked:true, colors:['#99CCFF', '#CCCC00','#00CC66'],height:300,vAxis:{title: 'Number of matches won'},hAxis:{title: 'Year'}})</code></p>
+</div>
+
+<div class="sixteen columns">
+<h5>ODI matches</h5>
+<pre>
+   <code>
+Year,India,Draw,Pakistan
+1978,1,0,2
+1982,1,0,2
+1983,2,0,1
+1984,1,0,1
+1985,3,0,1
+1986,0,0,2
+1987,1,0,6
+1988,1,0,1
+1990,0,0,1
+1991,1,0,2
+1992,1,0,0
+1994,0,0,2
+1995,0,0,1
+1996,3,0,5
+1997,5,0,5
+1998,4,0,5
+1999,2,0,5
+2000,2,0,5
+2003,1,0,0
+2004,4,0,6
+2005,1,0,4
+2006,5,0,2
+2007,3,0,2
+2008,2,0,2
+2009,0,0,1
+2010,1,0,0
+2011,1,0,0
+2012,1,0,1
+2013,2,0,1
+
+   </code>
+</pre>
+<p><code>(@column {isStacked:true, colors:['#99CCFF', '#CCCC00','#00CC66'],height:300,vAxis:{title: 'Number of matches won'},hAxis:{title: 'Year'}})</code></p>
+</div>
+
+<div class="sixteen columns">
+<h5>T20 matches</h5>
+<pre>
+   <code>
+Year,India,Draw,Pakistan
+2007,2,0,0
+2012,2,0,1
+   </code>
+</pre>
+<p><code>(@column {isStacked:true, colors:['#99CCFF', '#CCCC00','#00CC66'],height:300, width: 500, vAxis:{title: 'Number of matches won'},hAxis:{title: 'Year'}})</code></p>
+</div>
+
+<div class="sixteen columns">
+<p><strong>Data sources</strong><br>
+India vs Pakistan Cricket Rivalry Wikipedia: <a href="http://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry">Wiki</a> <br>
+Test, ODI, T20 scorecards and summaries: <a href="http://www.howstat.com.au/cricket/Statistics/Matches/MatchMenu.asp">Howstat</a> <br>
+Test, ODI, T20 scorecards: <a href="http://stats.espncricinfo.com/ci/engine/records/index.html?id=6;id=7;type=headtohead">Cricinfo</a> <br>
+Overall summary: <a href="http://www.itsonlycricket.com/entry/568/">Itsonlycricket</a>
+</p>
+
+</div>
+</div>
+</div>
+</body>
+</html>
